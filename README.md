@@ -9,7 +9,7 @@
 - At the top of the html document, you can find related Javascript files.
 
 ### Procedure
-- A participants see a brief display of 4 colored oriented ellipses.
+- Participant see a brief display of 4 colored oriented ellipses.
 - After a delay, another brief display appears. One of the ellipses has changed its color. Another randomly chosen ellipse has changed its orientation.
 - For the first 5 trials, participatns are asked to find the location of <b>orientation</b> change.
 - In the 6th trial, participatns are asked to find the location of <b>color</b> change.
@@ -19,7 +19,7 @@
 - At the top of the html document, you can find related Javascript files. 
 
 ### Procedure
-- A participants see a brief display of a colored oriented ellipse, followed by a delay.
+- Participant see a brief display of a colored oriented ellipse, followed by a delay.
 - For the first 5 trials, participatns are asked to recall the <b>orientation</b> of the ellipse.
 - In the 6th trial, participatns are asked to recall the <b>color</b> change.
 
