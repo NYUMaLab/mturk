@@ -5,6 +5,8 @@
 - In the actual mturk experiments, more trials were used.
 
 ## Experiment 1: Change localization to test one's irrelevant color
+### Main file: de_ori_example.html
+- At the top of the html document, you can find related Javascript files.
 ### Procedure
 - A participants see a brief display of 4 colored oriented ellipses.
 - After a delay, another brief display appears. One of the ellipses has changed its color. Another randomly chosen ellipse has changed its orientation.
@@ -12,6 +14,8 @@
 - In the 6th trial, participatns are asked to find the location of <b>color</b> change.
 
 ## Experiment 2: Delayed estimation to test one's irrelevant color
+### Main file: testcol.html
+- At the top of the html document, you can find related Javascript files. 
 ### Procedure
 - A participants see a brief display of a colored oriented ellipse, followed by a delay.
 - For the first 5 trials, participatns are asked to recall the <b>orientation</b> of the ellipse.
