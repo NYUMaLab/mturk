@@ -1,0 +1,289 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://dl.dropboxusercontent.com/u/9399986/change%20localization/mturk/raphael.js"></script>
+<script type="text/javascript" src="https://dl.dropboxusercontent.com/u/9399986/change%20localization/mturk/testcol.js"></script>
+<script type="text/javascript" src="https://dl.dropboxusercontent.com/u/9399986/change%20localization/mturk/test_demo_col.js"></script>
+<script type="text/javascript" src="https://dl.dropboxusercontent.com/u/9399986/change%20localization/mturk/test_colorblind.js"></script>
+<script type="text/javascript" src="https://timbrady.org/turk/TimTurkTools.js"></script>
+<script>
+// hide submit button
+//$(document).ready(function() {
+//	$('#submitButton').hide();
+//}
+</script>
+<style type="text/css">
+	#submitButton {
+	    display: none;	
+	}
+	body { 					/* entire page */
+		font-family: Arial;
+	}
+	#canvas_container {
+	    margin: 0 auto;
+	    width: 400px;
+	    height: 400px;
+	    background: gray;
+	    display: none;
+	    margin-top: 10px;
+	}
+	#startTrial {
+	    text-align: center;
+	    font-weight: bold;
+	    font-size: 14pt;
+	    font-family: Arial, Helvetica;
+	    display: none;
+	}
+	#thanks {
+	    font-size: 14pt;
+	    font-family: Arial, Helvetica;
+	    text-align: center;
+	}
+	#button_continue{
+	    position: relative;
+	    text-align: center;
+	    font-size: 14pt;
+	    width: 7em;
+	    font-family: Arial, Helvetica;
+	    height:auto;
+	    display: none;
+	    margin: -208px auto;
+	}
+	#screensize_msg{
+	    width: 600px;
+	    font-family: Arial, Helvetica;
+	    font-size: 20px;
+	    margin: 100px auto;
+	    display:none;
+	}
+	#button_msg{
+	    font-size: 14pt;
+	    width: 20em;		    
+	    font-family: Arial, Helvetica;
+	    height:auto;
+	    margin: 0 auto;		    
+	}
+	#button_check{
+	    font-size: 14pt;
+	    width: 14em;
+	    font-family: Arial, Helvetica;
+	    height:auto;
+	    margin: 0 auto;
+	}
+	.demo{
+	    width: 600px;
+	    height: 180px;
+	    font-size: 14pt;
+	    font-family: Arial, Helvetica;
+	    margin: 0 auto;
+	    display: none;
+	    margin-top: 5px;
+	}
+	#button_demo1{
+	    font-size: 14pt;
+	    width: 7em;
+	    font-family: Arial, Helvetica;
+	    height:auto;
+	    margin: 10px auto;
+	}
+	.button_next{
+	    display: none;
+	    position: relative;
+	    margin: 5px auto;
+	    left: 170px;
+	    font-size: 12pt;
+	}
+	.button_prev{
+	    display: none;
+	    position: relative;
+	    margin: 5px auto;
+	    left: -170px;
+	    font-size: 12pt;
+	}
+	#colorblind_test{
+	    font-size: 14pt;
+	    font-family: Arial, Helvetica;
+	    width: 600px;
+	    margin: 100px auto;
+	    display: none;
+	}
+	.CBimg{
+		width: 40%;
+		height: auto;
+		vertical-align:middle;
+	}
+	#button_continue_to_CB{
+	    font-size: 14pt;
+	    width: 14em;
+	    font-family: Arial, Helvetica;
+	    height:auto;
+	    margin: 0 auto;
+	    display: none;
+	}
+	#button_check_CB{
+	    font-size: 14pt;
+	    width: 14em;
+	    font-family: Arial, Helvetica;
+	    height:auto;
+	    margin: 0 auto;
+	}
+	#before_demo{
+	    width: 600px;
+	    font-family: Arial, Helvetica;
+	    text-align: center;
+	    margin: 100px auto;
+	}
+	#summary{
+	    width: 600px;
+	    font-family: Arial, Helvetica;
+	    font-size: 20px;
+	    margin: 100px auto;
+	}
+	#button_next{
+	    font-size: 14pt;
+	    width: 7em;
+	    font-family: Arial, Helvetica;
+	    height:auto;
+	    margin: 0 auto;
+	}
+	#previewMode p {
+		margin-top: 100px;
+	}
+	#previewMode {
+		position: absolute; 	/* absolute coordinate */
+		top:0px;
+		left:0px;		/* top left corner*/
+		width: 100%;
+		text-align: center;
+		height: 100%;
+		font-size: 40pt;
+		opacity: 0.30;
+	}	
+</style>
+<div id="summary">
+	<p>This task requires a screen resolution bigger than 800x600. Please make your browser window big enough to see the task.
+	<p>This task tests your visual short-term memory.
+	<p>The task consists of 30 trials. Each trial takes about 5 seconds. 
+	<p>Your result will be automatically submitted after you finish the task in the end.
+	<p>You are going to first learn about the task by going through a demo of a single trial.
+	<p>Click Continue to proceed.
+	<p> 	
+	<input type="button" id="button_next" name="button_next" value="Continue" onclick="ShowScreenMsg()">
+</div>
+
+<div id="screensize_msg">
+	<p>Before you start, we need to check whether your browser window is large enough.</p>
+	<p>Please press the button below.</p>
+	<input style="text-align: center" type="button" id="button_check" name="button_check" value="Check My Window Size" onclick="CheckBrowserSize()">
+	<input style="text-align: center" type="button" id="button_continue_to_CB" name="button_continue_to_CB" value="Continue" onclick="StartCBTest()">
+</div>
+
+<div id="colorblind_test">
+	The task requires the ability to see color or perceive color differences.
+	<p>
+	Below, in each picture you'll see a number. 
+	Type the number in the blank.
+	<p>
+	Click 'Check My Color Vision' button at the bottom once you are done.
+	<p>
+	
+	<img src = "https://dl.dropboxusercontent.com/u/9399986/change%20localization/mturk/colorblind_6.jpg" class="CBimg" id="colorBlindImg1">
+	<input type="text" class="CBtext" id="colorBlindAns1">
+	
+	<br>
+	<img src = "https://dl.dropboxusercontent.com/u/9399986/change%20localization/mturk/colorblind_5.jpg" class="CBimg" id="colorBlindImg2">
+	<input type="text" class="CBtext" id="colorBlindAns2">
+	
+	<br>
+	<img src = "https://dl.dropboxusercontent.com/u/9399986/change%20localization/mturk/colorblind_42.jpg" class="CBimg" id="colorBlindImg3">
+	<input type="text" class="CBtext" id="colorBlindAns3">
+	
+	<br>
+	<img src = "https://dl.dropboxusercontent.com/u/9399986/change%20localization/mturk/colorblind_7.jpg" class="CBimg" id="colorBlindImg4">
+	<input type="text" class="CBtext" id="colorBlindAns4">
+	
+	<br>
+	<img src = "https://dl.dropboxusercontent.com/u/9399986/change%20localization/mturk/colorblind_29.jpg" class="CBimg" id="colorBlindImg5">
+	<input type="text" class="CBtext" id="colorBlindAns5">
+	
+	<br>
+	<img src = "https://dl.dropboxusercontent.com/u/9399986/change%20localization/mturk/colorblind_10.jpg" class="CBimg" id="colorBlindImg6">
+	<input type="text" class="CBtext" id="colorBlindAns6">
+
+	<p>
+	<input type="button" id="button_check_CB" name="button_check_CB" value="Check My Color Vision" onclick="CheckColorBlind()">
+</div>
+	
+<div class="demo" id="demoPage1">
+	<p>Thank you. Your color vision is fine.
+	<p>Now we will go through a demo trial. Click Continue to start.</p>
+	<div align="center"><input type="button" id="button_demo1" name="button_demo1" value="Continue" onclick="DemoPage2()"></div>
+</div>
+
+<div id="canvas_container">
+	<!-- Save data: performance, response, stimuli, reaction time -->
+	<input type="hidden" id="exptype" name="exptype" value="C">
+	<input type="hidden" id="performance" name="performance" value="">
+	<input type="hidden" id="response" name="response" value="">
+	<input type="hidden" id="display1Ori" name="display1Ori" value="">
+	<input type="hidden" id="display1Col" name="display1Col" value="">
+	<input type="hidden" id="display2Ori" name="display2Ori" value="">
+	<input type="hidden" id="display2Col" name="display2Col" value="">
+	<input type="hidden" id="deltaOri" name="deltaOri" value="">
+	<input type="hidden" id="deltaCol" name="deltaCol" value="">
+	<input type="hidden" id="targetOri" name="targetOri" value="">
+	<input type="hidden" id="targetCol" name="targetCol" value="">	
+</div>
+
+<div align = "center">
+	<input type="button" id="button_continue" name="button_continue" value="Continue" onclick="DrawCircles()">
+</div>
+
+<div class="demo" id="demoPage2">
+	Each trial will start with a blank screen with a cross in the center.
+	<p>Make sure that you always look at it during the experiment.
+	<div align="center"><input type="button" class="button_next" id="button_next_demo2" value="Next >>" onclick="DemoPage3()"></div>
+</div>
+
+<div class="demo" id="demoPage3">
+	First, you will very briefly see four colored ovals with random orientations and colors.<p>
+	<b>Remember their COLORS. You can ignore their orientations.</b>
+	<div align="center"><input type="button" class="button_prev" id="button_prev_demo3" value="<< Prev" onclick="DemoPage2()">
+	<input type="button" class="button_next" id="button_next_demo3" value="Next >>" onclick="DemoPage4()"></div>
+</div>
+
+<div class="demo" id="demoPage4">	
+	Then a blank screen will appear for one second.
+	<div align="center"><input type="button" class="button_prev" id="button_prev_demo4" value="<< Prev" onclick="DemoPage3()">
+	<input type="button" class="button_next" id="button_next_demo4" value="Next >>" onclick="DemoPage5()"></div>
+</div>
+
+<div class="demo" id="demoPage5">
+	Then, you will see another four ovals.
+	One oval will have changed its COLOR from the first display.
+	<p>In addition, one oval (the same one or different one) will have changed its ORIENTATION.<p>
+	<b>Your job is to find where the COLOR change occurred and to ignore the orientation change.</b>
+	<div align="center"><input type="button" class="button_prev" id="button_prev_demo5" value="<< Prev" onclick="DemoPage4()">
+	<input type="button" class="button_next" id="button_next_demo5" value="Next >>" onclick="DemoPage6()"></div>
+</div>
+
+<div class="demo" id="demoPage6">
+	Finally, two circles will appear at the locations of the ovals. 
+	<p>Click the location where the COLOR change occurred.
+	<div align="center"><input type="button" class="button_prev" id="button_prev_demo6" value="<< Prev" onclick="DemoPage5()">
+	<input type="button" class="button_next" id="button_next_demo6" value="Next >>" onclick="DemoPage7()"></div>
+</div>
+
+<div class="demo" id="demoPage7">
+	If you are correct, the cross in the center will turn green.
+	After that, the next trial will begin.
+	<p>This is the end of the demo.
+	<p>To start the experiment, press Next.
+	<div align="center"><input type="button" class="button_prev" id="button_prev_demo7" value="<< Prev" onclick="DemoPage6()">
+	<input type="button" class="button_next" id="button_next_demo7" value="Next >>" onclick="DemoPage8()"></div>
+</div>
+
+<div align="center" class="demo" id="demoPage8">
+	You will now start the task. 
+	<p><b>Be prepared! The displays will be VERY brief.</b>
+	<p>
+	<input type="button" id="startTrial" name="startTrial" value="Start Task" onclick="FirstTrial()">
+</div>
