@@ -4,7 +4,7 @@
 - Both experiments were designed by using Javascript, HTML, and CSS.
 - In the actual mturk experiments, more trials were used.
 
-## Experiment 1: Change localization to test one's irrelevant color
+## Experiment 1: Change localization to test one's irrelevant color memory
 ### Main file: de_ori_example.html
 - At the top of the html document, you can find related Javascript files.
 
@@ -14,7 +14,7 @@
 - For the first 5 trials, participatns are asked to find the location of <b>orientation</b> change.
 - In the 6th trial, participatns are asked to find the location of <b>color</b> change.
 
-## Experiment 2: Delayed estimation to test one's irrelevant color
+## Experiment 2: Delayed estimation to test one's irrelevant color memory
 ### Main file: testcol.html
 - At the top of the html document, you can find related Javascript files. 
 
