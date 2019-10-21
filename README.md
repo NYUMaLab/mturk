@@ -1,4 +1,7 @@
-# mturk
+# mturk (archival copy)
+
+This is a Ma lab copy of the original GitHub repository and code base, kept here for archival purposes. Please go to https://github.com/hongsups/mturk for possible updates.
+
 - This repository contains codes for two online experiments (Amazon Mechanical Turk) to test human participant's irrelevant feature memory.
 - See [here](http://www.hongsup.com/blog/2015/6/28/surprise) for more details.
 - Both experiments were designed by using Javascript, HTML, and CSS.
